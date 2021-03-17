@@ -1,0 +1,82 @@
+
+<ng-template #stepOne>
+  <app-dados-pessoais></app-dados-pessoais>
+</ng-template>
+
+<ng-template #stepTwo>
+  <app-sobre-financiamento></app-sobre-financiamento>
+</ng-template>
+
+<ng-template #stepThree>
+  <app-resultado></app-resultado>
+</ng-template>
+<form [formGroup]="isOptional" class="disp-none">
+  <input formControlName="stepper" [(ngModel)]='stepperTrue' [value]="stepperTrue">
+</form>
+<form [formGroup]="isOptional2" class="disp-none">
+  <input formControlName="stepper" [(ngModel)]='stepperTrue2' [value]="stepperTrue2">
+</form>
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+  <mat-vertical-stepper #stepper [linear]="true">
+    <mat-step label='Dados pessoais' [stepControl]="isOptional">
+      <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+      <div class="container-button">
+      <button
+      at-button
+      matStepperNext
+      [ngClass]="!buttonIsReady? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+      [disabled]="!buttonIsReady"
+      (click)="nextPage(true)"  > Próximo</button>
+      </div>
+    </mat-step>
+    <mat-step label='Simulação'  [stepControl]="isOptional2">
+      <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+      <div class="container-button">
+        <button at-button matStepperNext  [ngClass]="!buttonInfosCarsReady ? 'btn-disabled btn-layout' : 'button-next btn-layout'" [disabled]="!buttonInfosCarsReady" (click)="nextPageResult(true)" > Próximo</button>
+        <button at-button matStepperPrevious class="button-back btn-layout">Voltar</button>
+      </div>
+    </mat-step>
+    <mat-step label='Resultado'>
+      <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+      <div class="container-button">
+       <button at-button matStepperPrevious class="button-back btn-layout">Voltar</button>
+       </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</ng-template>
+
+<ng-template #bigScreen>
+  <mat-horizontal-stepper linear #stepper >
+    <mat-step label='Dados pessoais' [stepControl]="isOptional">
+      <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+      <div class="container-button">
+        <button
+        at-button
+        matStepperNext
+        [ngClass]="!buttonIsReady? 'btn-disabled btn-layout' : 'button-next btn-layout' "
+        (click)="nextPage(true)"  > Próximo</button>
+      </div>
+    </mat-step>
+    <mat-step label='Simulação' >
+      <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+      <div class="container-button">
+        <button at-button matStepperNext [ngClass]="!buttonInfosCarsReady? 'btn-disabled btn-layout' : 'button-next btn-layout'" [disabled]="!buttonInfosCarsReady" (click)="nextPageResult(true)"> Próximo</button>
+        <button at-button matStepperPrevious class="button-back btn-layout">Voltar</button>
+      </div>
+    </mat-step>
+    <mat-step label='Resultado'>
+      <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+      <div class="container-button">
+        <button at-button matStepperPrevious class="button-back btn-layout">Voltar</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>
+
+
+<div class="container-fullscreen-button show-hide-icon">
+  <div class="open-in-full fullscreen-icon-layout" (click)="openInFullScreenInfosCarFinancing()">
+    <mat-icon>open_in_full</mat-icon>
+  </div>
+
+</div>

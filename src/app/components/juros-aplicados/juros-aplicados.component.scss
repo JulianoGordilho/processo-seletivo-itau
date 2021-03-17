@@ -1,0 +1,22 @@
+@import '../../../styles.scss';
+
+.container-fees{
+  height: 100vh;
+  padding: 40px;
+}
+.title{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.container-infos{
+  margin: 10px 5px 20px;
+}
+.sub-title{
+  font-size: 20px;
+  color: $--all-text-color;
+}
+@media only screen and(min-width:1024px){
+.container-fees {
+  height: 100%;
+  }
+}

@@ -1,0 +1,87 @@
+<form class="container-about-financing grey-text-color" [formGroup]="vehicleType">
+  <p class="text-about-financing ">
+    Agora, precisamos saber sobre o seu financiamento
+  </p>
+  <div class="type-financing">
+    <p class="text-select-option text-size-14">
+      Selecione o tipo de simulação que deseja fazer *
+    </p>
+    <mat-radio-group
+    (change)="changeSimulationType()"
+    aria-label="Selecione o tipo de simulação que deseja fazer"
+    class="radio-group"
+    formControlName='simulationType'>
+      <mat-radio-button value="veiculo" [checked]='false' class="radio-option">Veículo</mat-radio-button>
+      <mat-radio-button value="valor" [checked]='false' class="radio-option">Valor</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="vehicle-value" *ngIf="simulationType === 'valor'">
+    <mat-form-field class="example-full-width">
+      <mat-label>Valor do veículo*</mat-label>
+      <input
+        #fullPriceCars
+        matInput
+        type="text"
+        (ngModelChange)="inputValueChanged(fullPriceCars.value)"
+        currencyMask
+        [(ngModel)]="fullPriceCar"
+        autocomplete="off"
+        formControlName='fullPriceCar'
+        maxlength="15"
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        class="text-size-20 input-total-price grey-text-color"
+
+      >
+    </mat-form-field>
+  </div>
+  <div class="who-type-vehicle" *ngIf="simulationType === 'veiculo'">
+    <p class="text-type-vehicle text-size-14">
+      Selecione o tipo de veículo *
+    </p>
+    <div class="container-vehicle-type"  >
+      <mat-radio-group
+      aria-label="Selecione o tipo de simulação que deseja fazer"
+      class="radio-group"
+      formControlName='typeVehicle' (change)="changeTypeVehicle($event)">
+        <mat-radio-button value="carros" [checked]='false' class="radio-type-vehicle radio-option">Carro</mat-radio-button>
+        <mat-radio-button value="motos" [checked]='false' class="radio-type-vehicle radio-option">Moto</mat-radio-button>
+        <mat-radio-button value="caminhoes" [checked]='false' class="radio-type-vehicle radio-option">Caminhão</mat-radio-button>
+      </mat-radio-group>
+      <div class="container-car">
+        <mat-form-field>
+          <mat-label>Nome </mat-label>
+          <mat-select formControlName="nameCar" >
+            <mat-option>Selecione o tipo de veículo</mat-option>
+            <mat-option
+            *ngFor="let brand of brands"
+            (click)="selectBrandRetrunModel(brand)"
+            [value]="brand.fipe_name">{{brand.fipe_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Modelo/Versão * </mat-label>
+          <mat-select formControlName="version">
+            <mat-option>Selecione o tipo de veículo</mat-option>
+            <mat-option
+            *ngFor="let model of models"
+            (click)="selectModelReturnYear(model)"
+            [value]="model.fipe_name">{{model.fipe_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ano * </mat-label>
+          <mat-select formControlName="year">
+            <mat-option>Selecione o tipo de veículo</mat-option>
+            <mat-option
+            *ngFor="let year of years"
+            (click)="selectYearReturnFull(year)"
+            [value]="year.name">{{year.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>

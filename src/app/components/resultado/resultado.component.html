@@ -1,0 +1,110 @@
+<div class="container-result grey-text-color" >
+  <div class="container-data-result">
+    <p class="title-result text-size-20 margin-bottom-15">
+      Esse é o resultado da sua simulação
+    </p>
+    <p class="data-result-vehicle text-size-14 margin-bottom-15" *ngIf="simulationType === 'veiculo'">
+      {{carData.veiculo}} | {{carData.preco}}
+    </p>
+    <p class="data-result-value text-size-14 margin-bottom-15" *ngIf="simulationType === 'valor'" >
+      <span class="text-data-result"> Valor do veículo:</span>
+      <input currencyMask
+          [(ngModel)]="fullPriceCar"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color outline-none"
+          readonly/>
+    </p>
+    <div class="infos-entry-payment">
+      <p class="title-payment text-size-14 margin-bottom-15">
+        Valor da Entrada <span class="percent-payment">(mínimo de 10% do valor total)</span> *
+      </p>
+      <div class="slider-value-entry-payment">
+        <p class="text-size-20">
+          <input currencyMask
+          [(ngModel)]="sliderValue.value"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color outline-none"
+          readonly
+          />
+        </p>
+        <mat-slider
+          [min] = "minValueSlider"
+          [max] = "maxValueSlider"
+          [value]='minValueSlider'
+          aria-label="Valor da entrada de mil a um milhão"
+          (change)='sliderChangeValue($event.value, "slider")'
+          #sliderValue></mat-slider>
+      </div>
+    </div>
+  </div>
+  <div class="container-cards">
+    <p class="title-cards margin-bottom-15">Prazo e parcelas</p>
+    <div class="container-cards-value margin-bottom-15">
+      <mat-card class="text-size-16 card-price"  [ngClass]='apperance12x? " card-select":"card-price"' (click)="cardSelect('12x')">
+        <span class="text-size-14 priceX">12x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total12x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+      <mat-card class="text-size-16 card-price"   [ngClass]='apperance18x? " card-select":"card-price"'  (click)="cardSelect('18x')">
+        <span class="text-size-14 priceX">18x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total18x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+      <mat-card class="text-size-16 card-price"   [ngClass]='apperance24x? " card-select":"card-price"'  (click)="cardSelect('24x')">
+        <span class="text-size-14 priceX">24x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total24x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+      <mat-card class="text-size-16 card-price"   [ngClass]='apperance36x? " card-select":"card-price"'  (click)="cardSelect('36x')">
+        <span class="text-size-14 priceX">36x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total36x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+      <mat-card class="text-size-16 card-price"   [ngClass]='apperance48x? " card-select":"card-price"'  (click)="cardSelect('48x')">
+        <span class="text-size-14 priceX">48x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total48x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+      <mat-card class="text-size-16 card-price"  [ngClass]='apperance60x? " card-select":"card-price"'  (click)="cardSelect('60x')">
+        <span class="text-size-14 priceX">60x</span>
+        <!-- {{transformNumber(sliderValue.value, 12)}} -->
+        <input currencyMask
+          readonly
+          [(ngModel)]="total60x"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          class="text-size-20 input-total-price grey-text-color"
+          />
+      </mat-card>
+
+    </div>
+  </div>
+
+  <div class="detail-costs-total">
+    <p class="primary-color title-detail-costs" (click)="openModal()" >Detalhes do Custo efetivo total (CET)</p>
+  </div>
+</div>

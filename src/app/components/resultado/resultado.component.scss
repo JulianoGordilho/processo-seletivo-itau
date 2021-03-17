@@ -1,0 +1,84 @@
+@import '../../../variables.scss';
+
+
+.title-detail-costs{
+  font-size: 12px;
+  cursor: pointer;
+}
+.container-cards-value{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 10px;
+  mat-card{
+    text-align: center;
+    padding: 20px 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #CCCCCC;
+  }
+  .card-select{
+    background-color: $--primary-color;
+    color: $--white;
+    input{
+      color: $--white;
+      cursor: none;
+      outline: none;
+      border: none;
+      text-align: left;
+    }
+  }
+}
+.slider-
+.input-total-price{
+  text-align: left !important;
+  border: none;
+}
+.mat-slider-horizontal{
+  width: 100%;
+}
+.card-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left  ;
+  .input-total-price{
+    text-align: left;
+  }
+  input{
+    max-width: 80px;
+    background: transparent;
+    outline: none;
+    border: none;
+    text-align: left!important;
+  }
+}
+.data-result-value{
+  display: flex;
+  align-items: center;
+  input{
+    font-size: 13px;
+    max-width: 150px;
+  }
+}
+mat-card{
+  .data-result-value{
+    font-size: 12px;
+  }
+  input{
+    font-size: 12px;
+  }
+}
+.card-price{
+  cursor: pointer;
+  .priceX{
+    font-size: 12px;
+  }
+}
+@media only screen and(min-width:1024px){
+  .card-price {
+    input{
+      max-width: 120px;
+    }
+  }
+
+}
+

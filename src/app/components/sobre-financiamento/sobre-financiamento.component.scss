@@ -1,0 +1,48 @@
+@import '../../../variables.scss';
+
+
+.text-select-option{
+  margin-top: 20px;
+}
+.radio-group{
+  .radio-option{
+    margin: 5px 10px 15px 0;
+  }
+}
+.radio-group{
+  .radio-type-vehicle{
+    margin: 5px 10px 10px 0;
+  }
+}
+.text-type-vehicle{
+  margin-top: 0px;
+}
+.input-total-price{
+  text-align: left!important;
+}
+@media only screen and(min-width:1024px){
+  .text-about-financing{
+    font-size: 20px;
+  }
+  .text-type-vehicle{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .text-select-option{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .radio-option{
+    font-size: 18px;
+  }
+  .container-car{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 20px 80px;
+  }
+}
+
+@media only screen and(min-width:1150px){
+
+
+}

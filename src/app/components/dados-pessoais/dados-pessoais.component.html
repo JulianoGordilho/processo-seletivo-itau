@@ -1,0 +1,54 @@
+<div class="container-data-personal">
+  <p class="text-data-personal grey-text-color">
+    Para iniciar, precisamos saber um pouco sobre você.
+  </p>
+  <form class="form-data-personal" [formGroup]="dataPersonal">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome*</mat-label>
+      <input matInput formControlName="name"
+      autocomplete="name" [value]="inputName"
+      (input)='validatorForm()'
+      (input)="validatorFormNotNumber($event,'name')"
+      type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Sobrenome*</mat-label>
+      <input matInput
+      formControlName="surname"
+      autocomplete="additional-name"
+      [value]="inputSurName"
+      type="text " (input)="validatorFormNotNumber($event,'surname')">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>CPF*</mat-label>
+      <!-- <input [textMask]="{mask: mask}" [(ngModel)]="myModel" type="text"/> -->
+      <input matInput formControlName="cpf" autocomplete="off" (input)='validatorForm()' [textMask]="{mask: maskCPF}" [(ngModel)]="cpfModel">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email*</mat-label>
+      <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com" autocomplete="email" (input)='validatorForm()'>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Celular*</mat-label>
+      <input matInput formControlName="phone" (input)='validatorForm()' [textMask]="{mask: maskPhone}" [(ngModel)]="phoneModel">
+    </mat-form-field>
+  </form>
+    <div class="container-text-autorization">
+      <p class="text-autorization grey-text-color">
+        Ao continuar, você autoriza que o Itaú acesse suas informações e está ciente de que poderá ser contatado por e-mail, telefone, WhatsApp ou SMS, para recebimento de ofertas de produtos e serviços do Conglomerado Itaú Unibanco. <br><br>  Saiba mais sobre como o Itaú trata dados pessoais na "Política de Privacidade" disponível em seus sites e aplicativos.
+      </p>
+    </div>
+
+</div>
+

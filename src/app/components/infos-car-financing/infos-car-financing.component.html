@@ -1,0 +1,66 @@
+<div class="container-principal-infos  background-primary-color">
+  <div class="infos">
+    <div class="container-cars-financing">
+      <div class="container-logo-infos">
+        <img src="assets/itau-logo@2x.png" alt="Logo Itáu">
+      </div>
+
+    </div>
+    <div class="container-text-infos"  >
+      <div class="data-financing">
+        <div class="title-info-financing white-color text-size-30">
+          Financiamento de veículo
+        </div>
+        <div class="paragraph-description white-color" *ngIf="!inputIsFilled">
+          A compra do seu próximo carro em poucos passos. <br> <br>
+          Faça uma simulação e veja o valor da parcelado seu próximo veículo.
+        </div>
+        <div class="paragraph-description white-color" *ngIf="inputIsFilled && !carDataValues.id && simulationTyped !== 'valor' ">
+          <span class="name">{{personalDataValues.name}}</span>,
+          vamos seguir com mais alguns passos para simular seu financiamento.
+        </div>,
+        <div class="paragraph-description white-color" *ngIf="simulationTyped === 'valor'">
+          <div class="margin-bottom-15">
+            <span class="name">{{personalDataValues.name}}</span>,
+          esse é o resumo da sua simulação.
+          </div>
+          <div class="paragraph-description white-color margin-bottom-15">
+            <span class="text-size-18">Valor</span> <br>
+            <span class="margin-left-15 text-size-30">{{fullPrice}}</span>
+          </div>
+        </div>
+        <div class="paragraph-description white-color" *ngIf="carDataValues.id && carDataValues.id !== 0">
+          <div class="margin-bottom-15">
+            <span class="name">{{personalDataValues.name}}</span>,
+            esse é o resumo da sua simulação.
+          </div>
+          <br>
+          <div class="paragraph-description white-color margin-bottom-15">
+            <span>Marca:</span> <br>
+            <span class="margin-left-15 text-size-30">{{carDataValues.marca}}</span>
+          </div>
+          <div class="paragraph-description white-color margin-bottom-15">
+            <span>Modelo / Versão:</span> <br>
+            <span class="margin-left-15 text-size-30">{{carDataValues.veiculo}}</span>
+          </div>
+          <div class="paragraph-description white-color margin-bottom-15">
+            <span>Ano:</span> <br>
+            <span class="margin-left-15 text-size-30">{{carDataValues.ano_modelo}}</span>
+          </div>
+          <div class="paragraph-description white-color margin-bottom-15">
+            <span>Valor:</span> <br>
+            <span class="margin-left-15 text-size-30">{{carDataValues.preco}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fullscreen container-fullscreen-button show-hide-icon">
+    <div class="close-fullscreen fullscreen-icon-layout primary-color" (click)="closeInfosCarToFinancing()" >
+      <mat-icon>close_fullscreen</mat-icon>
+    </div>
+
+  </div>
+</div>
+
+

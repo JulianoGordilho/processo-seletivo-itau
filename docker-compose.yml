@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  carsfinancing:
+    image: carsfinancing
+    build:
+      context: .
+    ports:
+      - 8081:80
