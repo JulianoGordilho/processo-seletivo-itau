@@ -7,7 +7,7 @@ import { ResponseModeloVersao } from './../interfaces/response-modelo-versao';
   providedIn: 'root'
 })
 export class FipeModeloVersaoService {
-  private readonly api = '/api';
+  private readonly api = 'http://fipeapi.appspot.com/api/1/';
 
   constructor(
     private http: HttpClient

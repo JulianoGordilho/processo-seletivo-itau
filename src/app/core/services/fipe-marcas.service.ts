@@ -7,7 +7,7 @@ import { ResponseMarcas } from './../interfaces/response-marcas';
   providedIn: 'root'
 })
 export class FipeMarcasService {
-  private readonly api = '/api';
+  private readonly api = 'http://fipeapi.appspot.com/api/1/';
 
   constructor(
     private http: HttpClient,
